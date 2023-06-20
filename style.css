@@ -209,3 +209,18 @@ hr {
     width: 90%;
     margin: auto;
 }
+
+/*Sobre*/
+.texto-sobre {
+    text-align: justify;
+}
+
+.redes-sociais-icons {
+    font-weight: bold;
+    color: #444;
+}
+
+.redes-sociais-icons:hover {
+    text-decoration: none;
+    color: #3ec1d5;
+}
