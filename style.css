@@ -1,8 +1,6 @@
+/*Banner do header*/
 .top-banner-header {
     background: #009739;
-}
-.nav-link-color {
-    color: #2b2a2a;
 }
 
 .top-banner-header {
@@ -45,5 +43,35 @@
 @media (min-width: 1000px) {
     .top-banner-header-text {
         font-size: 24px;
+    }
+}
+
+/*Fim do banner do header*/
+
+/*Inicio do nav do header*/
+.nav-link-color {
+    color: #2b2a2a;
+}
+
+.row {
+    flex: 1;
+}
+
+.header-logo {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #e0e6e2;
+}
+.list-menus {
+    border-bottom: 1px solid #e0e6e2;
+}
+
+main {
+    margin-top: 166.7px;
+}
+
+@media (max-width: 991px) {
+    main {
+        margin-top: 125.7px;
     }
 }
