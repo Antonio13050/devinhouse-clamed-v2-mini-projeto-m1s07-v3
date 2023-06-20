@@ -108,6 +108,16 @@ main {
     font-size: 1.3rem;
 }
 
+.card-body a {
+    background: #009739;
+    border: none;
+    width: 80%;
+}
+
+.card-body a:hover {
+    background: #006426;
+}
+
 .card-header {
     border: none;
     background-color: #ffffff;
