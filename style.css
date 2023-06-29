@@ -273,6 +273,7 @@ label {
     font-weight: bold;
     background: white;
     border-style: solid;
+    cursor: pointer;
 }
 .fa-circle {
     color: white;
@@ -281,4 +282,18 @@ label {
 .red-cart {
     color: #009739;
     background: white;
+    cursor: pointer;
+}
+
+.fa-heart-header {
+    color: #009739;
+    padding-right: 10px;
+    cursor: pointer;
+}
+.btn-favoritos-header {
+    color: white;
+}
+
+.btn-favoritos-header:hover {
+    color: white;
 }

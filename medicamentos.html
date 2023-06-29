@@ -48,21 +48,37 @@
                     <div class="row">
                         <div class="col-12 header-logo align-items-center">
                             <a class="navbar-brand" href="index.html"> </a>
-                            <a
-                                class="link btn-carrinho"
-                                data-bs-toggle="offcanvas"
-                                data-bs-target="#offcanvasRight"
-                                aria-controls="offcanvasRight"
-                                ><span class="fa-stack fa-xl" data-count="0">
-                                    <i
-                                        class="fa fa-circle fa-stack-2x fa-inverse"
-                                    ></i>
-                                    <i
-                                        class="fa fa-shopping-cart fa-stack-2x red-cart fa-sharp"
-                                    ></i>
-                                </span>
-                            </a>
-
+                            <div class="icones-header">
+                                <a
+                                    class="link btn-favoritos-header"
+                                    data-bs-toggle="offcanvas"
+                                    data-bs-target="#offcanvasfavoritos"
+                                    aria-controls="offcanvasRight"
+                                >
+                                    <span class="fa-xl"
+                                        ><i
+                                            class="fa-solid fa-heart fa-2xl fa-heart-header"
+                                        ></i>
+                                    </span>
+                                </a>
+                                <a
+                                    class="link btn-carrinho"
+                                    data-bs-toggle="offcanvas"
+                                    data-bs-target="#offcanvasRight"
+                                    aria-controls="offcanvasRight"
+                                    ><span
+                                        class="fa-stack fa-xl"
+                                        data-count="0"
+                                    >
+                                        <i
+                                            class="fa fa-circle fa-stack fa-inverse"
+                                        ></i>
+                                        <i
+                                            class="fa fa-shopping-cart fa-stack-2x red-cart fa-sharp"
+                                        ></i>
+                                    </span>
+                                </a>
+                            </div>
                             <button
                                 class="navbar-toggler"
                                 type="button"
@@ -191,6 +207,27 @@
                 </div>
             </section>
             <!--Fim do carrinho-->
+            <!--Inicio do favoritos-->
+            <section class="favoritos">
+                <div
+                    class="offcanvas offcanvas-end"
+                    tabindex="-1"
+                    id="offcanvasfavoritos"
+                    aria-labelledby="offcanvasRightLabel"
+                >
+                    <div class="offcanvas-header">
+                        <h5 id="offcanvasRightLabel">Meu favoritos</h5>
+                        <button
+                            type="button"
+                            class="btn-close text-reset"
+                            data-bs-dismiss="offcanvas"
+                            aria-label="Close"
+                        ></button>
+                    </div>
+                    <div class="offcanvas-body-favoritos container"></div>
+                </div>
+            </section>
+            <!--Fim do favoritos-->
             <!--Inicio dos cards-->
             <div class="container">
                 <!--Titulo da pagina-->

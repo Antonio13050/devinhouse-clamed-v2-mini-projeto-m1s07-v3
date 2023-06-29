@@ -92,7 +92,9 @@ infoCardTodosOsMedicamentos.forEach((card) => {
     iconCardHeader.classList.add("fa-heart");
     iconCardHeader.classList.add("fa-xl");
     iconCardHeader.classList.add("icon-favorite");
+    iconCardHeader.classList.add("icon-favorite-product");
     iconCardHeader.classList.add("py-4");
+    iconCardHeader.setAttribute("id", `favorite${card.id}`);
 
     let imgCard = document.createElement("img");
     imgCard.classList.add("card-img");
@@ -151,13 +153,11 @@ infoCardTodosOsMedicamentos.forEach((card) => {
 let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
 function adicionarAoCarrinho(e) {
-    console.clear();
     const botao = e.target.closest(".add");
     const id = parseInt(botao.getAttribute("id"));
-    console.log(id);
 
     const produtoExistente = carrinho.find((produto) => produto.id === id);
-    console.log(produtoExistente);
+
     if (produtoExistente) {
         console.log("O produto já está no carrinho.");
         return;
@@ -165,7 +165,6 @@ function adicionarAoCarrinho(e) {
 
     carrinho.push(infoCardTodosOsMedicamentos[id - 1]);
     localStorage.setItem("carrinho", JSON.stringify(carrinho));
-    console.log(carrinho);
 
     atualizaValorDocarrinho(carrinho);
 }
@@ -299,3 +298,133 @@ function exibirConteudoCarrinho() {
 }
 
 atualizaValorDocarrinho(carrinho);
+
+/*---------------Exercicio 4---------------*/
+let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+
+let botoesAddFavoritos = document.querySelectorAll(".icon-favorite-product");
+
+function favoritarProduto(e) {
+    const botao = e.target.closest(".icon-favorite-product");
+    const idSemFormatacao = botao.getAttribute("id");
+    const id = Number(idSemFormatacao.replace(/\D/g, ""));
+    console.log(id);
+
+    const produtoExistente = favoritos.find((produto) => produto.id === id);
+
+    if (produtoExistente) {
+        console.log("O produto já é favorito.");
+        return;
+    }
+    favoritos.push(infoCardTodosOsMedicamentos[id - 1]);
+    localStorage.setItem("favoritos", JSON.stringify(favoritos));
+    console.log(favoritos);
+    exibirConteudoFavoritos();
+}
+
+botoesAddFavoritos.forEach((botao) => {
+    botao.addEventListener("click", favoritarProduto);
+});
+
+function exibirConteudoFavoritos() {
+    const offcanvasFavoritos = document.querySelector(
+        ".offcanvas-body-favoritos"
+    );
+    offcanvasFavoritos.innerHTML = "";
+
+    const listaFavoritos = document.createElement("div");
+    listaFavoritos.classList.add("lista-favoritos");
+
+    favoritos.forEach((produto) => {
+        const itemFavoritos = document.createElement("div");
+        itemFavoritos.classList.add("item-favoritos");
+        itemFavoritos.classList.add("mb-4");
+        itemFavoritos.classList.add("d-flex");
+        itemFavoritos.classList.add("d-column");
+        itemFavoritos.classList.add("flex-wrap");
+
+        const divItemHeaderFavoritos = document.createElement("div");
+        const divItemBodyFavoritos = document.createElement("div");
+        divItemBodyFavoritos.classList.add("d-flex");
+        divItemBodyFavoritos.classList.add("d-column");
+
+        const nomeItemFavoritos = document.createElement("p");
+        nomeItemFavoritos.innerHTML = produto.titulo;
+
+        divItemHeaderFavoritos.appendChild(nomeItemFavoritos);
+        itemFavoritos.appendChild(divItemHeaderFavoritos);
+
+        const imgItemFavoritos = document.createElement("img");
+        imgItemFavoritos.setAttribute("src", produto.img);
+        imgItemFavoritos.setAttribute("alt", produto.alt);
+        imgItemFavoritos.classList.add("w-25");
+
+        divItemBodyFavoritos.appendChild(imgItemFavoritos);
+
+        const divItemPrecoFavoritos = document.createElement("div");
+
+        const divPrecoItemFavoritosAnterior = document.createElement("div");
+        const precoitemFavoritosAnterior = document.createElement("s");
+        precoitemFavoritosAnterior.innerHTML = produto.precoAnterior;
+        divPrecoItemFavoritosAnterior.appendChild(precoitemFavoritosAnterior);
+
+        divItemPrecoFavoritos.appendChild(divPrecoItemFavoritosAnterior);
+
+        const precoitemFavoritos = document.createElement("p");
+        precoitemFavoritos.classList.add("fw-bold");
+        precoitemFavoritos.classList.add("ms-2");
+        precoitemFavoritos.innerHTML = produto.precoAtual;
+
+        divItemPrecoFavoritos.appendChild(precoitemFavoritos);
+
+        divItemBodyFavoritos.appendChild(divItemPrecoFavoritos);
+
+        const buttonRemoverFavoritos = document.createElement("a");
+        buttonRemoverFavoritos.classList.add("btn");
+        buttonRemoverFavoritos.classList.add("btnRemoverFavoritos");
+        buttonRemoverFavoritos.setAttribute(
+            "id",
+            `removeFavorito${produto.id}`
+        );
+
+        const iconButtonRemoverFavoritos = document.createElement("i");
+        iconButtonRemoverFavoritos.classList.add("fa-solid");
+        iconButtonRemoverFavoritos.classList.add("fa-trash-can");
+        iconButtonRemoverFavoritos.classList.add("fa-lg");
+
+        buttonRemoverFavoritos.appendChild(iconButtonRemoverFavoritos);
+
+        divItemBodyFavoritos.appendChild(buttonRemoverFavoritos);
+
+        itemFavoritos.appendChild(divItemBodyFavoritos);
+
+        listaFavoritos.appendChild(itemFavoritos);
+    });
+    offcanvasFavoritos.appendChild(listaFavoritos);
+
+    let btnRemoverFavorito = document.querySelectorAll(".btnRemoverFavoritos");
+
+    function removeFavorito(e) {
+        const botao = e.target.closest(".btnRemoverFavoritos");
+        const idSemFormatacao = botao.getAttribute("id");
+        const id = Number(idSemFormatacao.replace(/\D/g, ""));
+        console.log(id);
+
+        const index = favoritos.findIndex((item) => item.id === id);
+
+        if (index !== -1) {
+            favoritos.splice(index, 1);
+            localStorage.setItem("favoritos", JSON.stringify(favoritos));
+        } else {
+            console.log("Item não é favorito");
+        }
+        exibirConteudoFavoritos();
+    }
+
+    btnRemoverFavorito.forEach((botao) => {
+        botao.addEventListener("click", removeFavorito);
+    });
+}
+exibirConteudoFavoritos();
+const btnFavoritos = document.querySelector(".btn-favoritos-header");
+btnFavoritos.addEventListener("click", exibirConteudoFavoritos);
