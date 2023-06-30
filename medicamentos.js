@@ -428,3 +428,5 @@ function exibirConteudoFavoritos() {
 exibirConteudoFavoritos();
 const btnFavoritos = document.querySelector(".btn-favoritos-header");
 btnFavoritos.addEventListener("click", exibirConteudoFavoritos);
+
+/*---------------Exercicio 5---------------*/
