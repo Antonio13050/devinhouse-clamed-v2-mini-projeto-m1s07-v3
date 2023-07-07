@@ -262,8 +262,8 @@ label {
     right: 0%;
     top: 0%;
     content: attr(data-count);
-    font-size: 40%;
-    padding: 0.6em;
+    font-size: 70%;
+    padding: 0.3em;
     border-radius: 999px;
     line-height: 0.75em;
     color: white;
@@ -277,6 +277,7 @@ label {
 }
 .fa-circle {
     color: white;
+    display: none;
 }
 
 .red-cart {
@@ -296,4 +297,22 @@ label {
 
 .btn-favoritos-header:hover {
     color: white;
+}
+
+.fa-sun,
+.fa-moon {
+    color: #009739;
+    cursor: pointer;
+    width: 30px;
+}
+
+.btn-carrinho {
+    color: white;
+}
+.btn-carrinho:hover {
+    color: white;
+}
+
+.fa-lg {
+    background-color: #009739;
 }
