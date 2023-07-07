@@ -2,7 +2,9 @@ import { atualizaValorDocarrinho } from "./modules/atualizaValorDocarrinho.js";
 /*---------------Exercicio 2---------------*/
 /*---------------Todos os medicamentos - Página medicamentos.html---------------*/
 
-let infoCardTodosOsMedicamentos = [
+let infoCardTodosOsMedicamentos = JSON.parse(
+    localStorage.getItem("infoCardTodosOsMedicamentos")
+) || [
     {
         id: 1,
         img: "img/doralgina.webp",
@@ -10,6 +12,7 @@ let infoCardTodosOsMedicamentos = [
         titulo: "Doralgina com 4 drágeas",
         precoAnterior: "DE R$ 2,00",
         precoAtual: "R$ 1,56",
+        eMaisVendido: true,
     },
     {
         id: 2,
@@ -18,6 +21,7 @@ let infoCardTodosOsMedicamentos = [
         titulo: "Stilgrip Granulado 1 envelope 5g",
         precoAnterior: "DE R$ 3,00",
         precoAtual: "R$ 1,52",
+        eMaisVendido: true,
     },
     {
         id: 3,
@@ -26,6 +30,7 @@ let infoCardTodosOsMedicamentos = [
         titulo: "Loratadina Cimed com 12 comprimidos 10mg generico",
         precoAnterior: "DE R$ 8,99",
         precoAtual: "R$ 6,77",
+        eMaisVendido: true,
     },
     {
         id: 4,
@@ -34,6 +39,7 @@ let infoCardTodosOsMedicamentos = [
         titulo: "Nimesulida Cimed com 12 comprimidos 100mg generico",
         precoAnterior: "DE R$ 12,00",
         precoAtual: "R$ 9,90",
+        eMaisVendido: true,
     },
     {
         id: 5,
@@ -42,6 +48,7 @@ let infoCardTodosOsMedicamentos = [
         titulo: "Doralgina com 4 drágeas",
         precoAnterior: "DE R$ 2,00",
         precoAtual: "R$ 1,56",
+        eMaisVendido: true,
     },
     {
         id: 6,
@@ -50,6 +57,7 @@ let infoCardTodosOsMedicamentos = [
         titulo: "Stilgrip Granulado 1 envelope 5g",
         precoAnterior: "DE R$ 3,00",
         precoAtual: "R$ 1,52",
+        eMaisVendido: true,
     },
     {
         id: 7,
@@ -58,6 +66,7 @@ let infoCardTodosOsMedicamentos = [
         titulo: "Loratadina Cimed com 12 comprimidos 10mg generico",
         precoAnterior: "DE R$ 8,99",
         precoAtual: "R$ 6,77",
+        eMaisVendido: true,
     },
     {
         id: 8,
@@ -66,8 +75,13 @@ let infoCardTodosOsMedicamentos = [
         titulo: "Nimesulida Cimed com 12 comprimidos 100mg generico",
         precoAnterior: "DE R$ 12,00",
         precoAtual: "R$ 9,90",
+        eMaisVendido: false,
     },
 ];
+
+let top4MaisVendidos = infoCardTodosOsMedicamentos
+    .filter((produto) => produto.eMaisVendido === true)
+    .filter((top4, index) => index < 4);
 
 infoCardTodosOsMedicamentos.forEach((card) => {
     let boxContainerTodosOsMedicamentos = document.querySelector(
@@ -317,6 +331,7 @@ function favoritarProduto(e) {
         return;
     }
     favoritos.push(infoCardTodosOsMedicamentos[id - 1]);
+
     localStorage.setItem("favoritos", JSON.stringify(favoritos));
     console.log(favoritos);
     exibirConteudoFavoritos();

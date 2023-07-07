@@ -17,7 +17,7 @@
             crossorigin="anonymous"
         ></script>
         <script src="script.js" defer></script>
-        <script src="index.js" defer></script>
+        <script type="module" src="index.js" defer></script>
 
         <link rel="stylesheet" href="style.css" />
         <!--Fim do CDN do Bootstrap-->
@@ -50,8 +50,34 @@
                         <div class="col-12 header-logo">
                             <a class="navbar-brand" href="#"> </a>
                             <div
-                                class="icones-header d-flex align-items-center"
+                                class="icones-header d-flex align-items-center justify-content-center"
                             >
+                                <a
+                                    class="link btn-favoritos-header"
+                                    data-bs-toggle="offcanvas"
+                                    data-bs-target="#offcanvasfavoritos"
+                                    aria-controls="offcanvasRight"
+                                >
+                                    <span class=""
+                                        ><i
+                                            class="fa-solid fa-heart fa-2xl fa-heart-header"
+                                        ></i>
+                                    </span>
+                                </a>
+                                <a
+                                    class="link btn-carrinho"
+                                    data-bs-toggle="offcanvas"
+                                    data-bs-target="#offcanvasRight"
+                                    aria-controls="offcanvasRight"
+                                    ><span class="fa-stack" data-count="0">
+                                        <i
+                                            class="fa fa-circle fa-stack fa-inverse"
+                                        ></i>
+                                        <i
+                                            class="fa fa-shopping-cart fa-stack-2x red-cart fa-sharp"
+                                        ></i>
+                                    </span>
+                                </a>
                                 <div class="btn-group" role="group">
                                     <button
                                         type="button"
@@ -87,17 +113,6 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <button
-                                    class="navbar-toggler"
-                                    type="button"
-                                    data-bs-toggle="collapse"
-                                    data-bs-target="#navbarNav"
-                                    aria-controls="navbarNav"
-                                    aria-expanded="false"
-                                    aria-label="Toggle navigation"
-                                >
-                                    <span class="navbar-toggler-icon"></span>
-                                </button>
                             </div>
                         </div>
                         <div class="collapse navbar-collapse" id="navbarNav">
@@ -193,7 +208,48 @@
                 </div>
             </section>
             <!--Fim do banner home-->
-
+            <!--Inicio do carrinho-->
+            <section class="carrinho">
+                <div
+                    class="offcanvas offcanvas-end"
+                    tabindex="-1"
+                    id="offcanvasRight"
+                    aria-labelledby="offcanvasRightLabel"
+                >
+                    <div class="offcanvas-header">
+                        <h5 id="offcanvasRightLabel">Meu carrinho</h5>
+                        <button
+                            type="button"
+                            class="btn-close text-reset"
+                            data-bs-dismiss="offcanvas"
+                            aria-label="Close"
+                        ></button>
+                    </div>
+                    <div class="offcanvas-body"></div>
+                </div>
+            </section>
+            <!--Fim do carrinho-->
+            <!--Inicio do favoritos-->
+            <section class="favoritos">
+                <div
+                    class="offcanvas offcanvas-end"
+                    tabindex="-1"
+                    id="offcanvasfavoritos"
+                    aria-labelledby="offcanvasRightLabel"
+                >
+                    <div class="offcanvas-header">
+                        <h5 id="offcanvasRightLabel">Meus favoritos</h5>
+                        <button
+                            type="button"
+                            class="btn-close text-reset"
+                            data-bs-dismiss="offcanvas"
+                            aria-label="Close"
+                        ></button>
+                    </div>
+                    <div class="offcanvas-body-favoritos container"></div>
+                </div>
+            </section>
+            <!--Fim do favoritos-->
             <div class="container">
                 <!--Titulo da pagina-->
                 <h3 class="my-2">Medicamentos mais vendidos</h3>
