@@ -18,6 +18,18 @@
         ></script>
         <script src="script.js" defer></script>
         <script src="contato.js" defer></script>
+        <script src="mapa.js" defer></script>
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+            integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+            crossorigin=""
+        />
+        <script
+            src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""
+        ></script>
         <link rel="stylesheet" href="style.css" />
         <!--Fim do CDN do Bootstrap-->
     </head>
@@ -216,22 +228,14 @@
         <section class="localizacao">
             <div class="container text-center">
                 <h3 class="my-3">Nossa localização</h3>
-                <div class="localizacao">
-                    <iframe
-                        class="embed-responsive-item"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113198.97490460875!2d-48.642053604125955!3d-27.54798351920612!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9527475e01a8efef%3A0x5b0f13adab8483ec!2sSENAI%20Florian%C3%B3polis%20(CTAI)!5e0!3m2!1sen!2sbr!4v1685846754188!5m2!1sen!2sbr"
-                        width="600"
-                        height="450"
-                        style="border: 0"
-                        allowfullscreen=""
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
-                    ></iframe>
-                    <p class="d-flex align-items-center justify-content-center">
-                        <span class="material-symbols-outlined"> distance </span
-                        >SC-401, 3730 - Saco Grande, Florianópolis - SC,
-                        88032-005
-                    </p>
+
+                <div class="localizacao embed-responsive-item">
+                    <div id="map"></div>
+                    <!-- <p class="d-flex align-items-center justify-content-center">
+                       <span class="material-symbols-outlined"> distance </span
+                       >SC-401, 3730 - Saco Grande, Florianópolis - SC,
+                       88032-005
+                   </p> -->
                 </div>
             </div>
         </section>

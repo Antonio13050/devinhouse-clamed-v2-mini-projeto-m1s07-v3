@@ -172,11 +172,16 @@ main {
 /*Fim do conteudo dos cards*/
 
 /*Inicio do conteudo da localizacao*/
+#map {
+    width: 600px;
+    height: 450px;
+    margin: 0 auto;
+}
 
 @media (min-width: 576px) and (max-width: 768px) {
     /*314*/
 
-    .localizacao iframe {
+    #map {
         width: 500px;
         height: 350px;
     }
@@ -185,7 +190,7 @@ main {
 @media (max-width: 576px) {
     /*314*/
 
-    .localizacao iframe {
+    #map {
         width: 300px;
         height: 200px;
     }
